@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Item from './Item.js';
+import Form from './Form.js';
 
 class Todo extends Component {
     constructor(props){
@@ -26,7 +27,7 @@ class Todo extends Component {
                 return res.json();
             })
             .then(todo => {
-                console.log(todo);
+              //  console.log(todo);
                 return this.setState({todo});
     
             })
@@ -43,6 +44,7 @@ class Todo extends Component {
         return (
             <div>
                 <h1>Todo</h1>
+                <Form/>
                 <ul>
                 {list}
                 </ul>
