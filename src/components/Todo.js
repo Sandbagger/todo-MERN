@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Item from './Item.js';
 
 class Todo extends Component {
     constructor(props){
@@ -32,6 +33,11 @@ class Todo extends Component {
     }
     
     render(){
+        const list = this.state.todo.map(i => (
+            <Item
+                key={i._id}
+                {...i}/>
+        ));
         return (
             <h1>Todo</h1>
         )
