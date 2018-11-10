@@ -25,21 +25,28 @@ class Todo extends Component {
             }
                 return res.json();
             })
-            .then(todos => {
-               // console.log(todos);
-                return this.setState({todos});
+            .then(todo => {
+                console.log(todo);
+                return this.setState({todo});
     
             })
     }
     
     render(){
-        const list = this.state.todo.map(i => (
+        const list = this.state.todo.map((i) => (
             <Item
                 key={i._id}
                 {...i}/>
         ));
+        console.log(this.state.todo, 'state')
+        console.log(list, 'render')
         return (
-            <h1>Todo</h1>
+            <div>
+                <h1>Todo</h1>
+                <ul>
+                {list}
+                </ul>
+            </div>
         )
     }
 }
