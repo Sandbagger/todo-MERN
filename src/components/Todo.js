@@ -10,8 +10,25 @@ class Todo extends Component {
 
     componentWillMount(){
         fetch('http://localhost:3000/api/todos')
-        .then(res => res.json())
-        .then(todos => this.setState({todos}))
+        .then(res => {
+            if(!res .ok){
+                if(res.status >= 400 && res.status < 500) {
+                   return res.json().then(data => {
+                       let err = {error: data.message};
+                       throw err;
+                   })
+                } else {
+                    let err = {error: 'Sorry, the server is not responding. Please try again later.'}
+                    throw err;
+                }
+            }
+                return res.json();
+            })
+            .then(todos => {
+               // console.log(todos);
+                return this.setState({todos});
+    
+            })
     }
     
     render(){
