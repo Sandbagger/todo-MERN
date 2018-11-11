@@ -63,8 +63,8 @@ class Todo extends Component {
             })
     }
 
-    toggleDone = () => {
-       return console.log("Done!");
+    toggleDone = (completed) => {
+       return console.log("Done!", completed);
     }
 
 
