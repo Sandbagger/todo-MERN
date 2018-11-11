@@ -63,8 +63,36 @@ class Todo extends Component {
             })
     }
 
-    toggleDone = (completed) => {
-       return console.log("Done!", completed);
+    toggleCompleted = (toggle, id) => {
+       const path = '/' + id; 
+        console.log("Toggle before", toggle, id)
+       
+        fetch(url + path,{
+            method: 'put',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({completed: !toggle})
+        })
+        .then(res => {
+            if(!res .ok){
+                if(res.status >= 400 && res.status < 500) {
+                   return res.json().then(data => {
+                       let err = {error: data.message};
+                       throw err;
+                   })
+                } else {
+                    let err = {error: 'Sorry, the server is not responding. Please try again later.'}
+                    throw err;
+                }
+            }
+                return res.json();
+            })
+            .then(toggle => {
+                console.log('toggle after', toggle);
+                return this.setState({todo: [...this.state.todo, toggle]});
+            })
+    
     }
 
 
@@ -73,7 +101,7 @@ class Todo extends Component {
             <Item
                 key={i._id}
                 {...i}
-                onClick = {this.toggleDone}
+                onClick = {this.toggleCompleted}
                 />
         ));
         console.log(this.state.todo, 'state')
