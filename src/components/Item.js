@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-const Item = ({name}) => (
-    <li>
-        {name}
+const Item = (props) => (
+    <li
+        onClick={() => console.log('Toggle click', props._id)}>
+        {props.name}
     </li>
 );
 

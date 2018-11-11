@@ -28,7 +28,7 @@ class Todo extends Component {
                 return res.json();
             })
             .then(todo => {
-              //  console.log(todo);
+                console.log(todo);
                 return this.setState({todo});
     
             })
@@ -63,11 +63,18 @@ class Todo extends Component {
             })
     }
 
+    toggleDone = () => {
+       return console.log("Done!");
+    }
+
+
     render(){
         const list = this.state.todo.map((i) => (
             <Item
                 key={i._id}
-                {...i}/>
+                {...i}
+                onClick = {this.toggleDone}
+                />
         ));
         console.log(this.state.todo, 'state')
         
