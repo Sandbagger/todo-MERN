@@ -33,6 +33,9 @@ class Todo extends Component {
             })
     }
     
+    postTodo = (t) => console.log('Todo POST', t)
+
+
     render(){
         const list = this.state.todo.map((i) => (
             <Item
@@ -40,11 +43,12 @@ class Todo extends Component {
                 {...i}/>
         ));
         console.log(this.state.todo, 'state')
-        console.log(list, 'render')
+        
         return (
             <div>
                 <h1>Todo</h1>
-                <Form/>
+                <Form 
+                    postTodo={this.postTodo}/>
                 <ul>
                 {list}
                 </ul>

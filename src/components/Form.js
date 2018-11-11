@@ -7,9 +7,11 @@ class Form extends Component {
     }
 
     handleInput = e => this.setState({input: e.target.value});
+    handleClick = () => {
+        console.log('Click', this.state.input)
+        this.props.postTodo(this.state.input);
+    }
 
-    handleSubmit = e => console.log('Submit', this.state.input)
-    
     render() {
         return (
             <div>
@@ -17,7 +19,9 @@ class Form extends Component {
              type="text" 
              value ={this.state.input}
              onChange={this.handleInput}/>
-             <button>Add to Todo</button>
+             <button
+                onClick={() => this.handleClick()}
+                >Add to Todo</button>
             </div>
         )
     }
