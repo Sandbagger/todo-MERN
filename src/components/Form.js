@@ -5,13 +5,19 @@ class Form extends Component {
         super(props);
         this.state = {input:'test'};
     }
+
+    handleInput = e => this.setState({input: e.target.value});
+
+    handleSubmit = e => console.log('Submit', this.state.input)
+    
     render() {
         return (
             <div>
              <input 
              type="text" 
-             value ={this.state.input}/>
-             <button>Add to list</button>
+             value ={this.state.input}
+             onChange={this.handleInput}/>
+             <button>Add to Todo</button>
             </div>
         )
     }
