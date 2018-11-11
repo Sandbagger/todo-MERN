@@ -88,9 +88,19 @@ class Todo extends Component {
             }
                 return res.json();
             })
-            .then(toggle => {
-                console.log('toggle after', toggle);
-                return this.setState({todo: [...this.state.todo, toggle]});
+            .then(updated => {
+                console.log('update', updated)
+                //need to iterate through list to find modified Item to flip boolean
+               
+                const list = this.state.todo.map(todo => {
+                    if(todo._id === updated._id){
+                        return {...todo, completed: !todo.completed}
+                    } else {
+                        return todo;
+                    }
+                })
+                
+                return this.setState({todo: list});
             })
     
     }
