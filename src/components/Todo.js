@@ -63,7 +63,7 @@ class Todo extends Component {
             })
     }
 
-    toggleCompleted = (toggle, id) => {
+    toggleTodo = (toggle, id) => {
        const path = '/' + id; 
         console.log("Toggle before", toggle, id)
        
@@ -101,7 +101,7 @@ class Todo extends Component {
             <Item
                 key={i._id}
                 {...i}
-                onClick = {this.toggleCompleted}
+                onClick = {this.toggleTodo}
                 />
         ));
         console.log(this.state.todo, 'state')
